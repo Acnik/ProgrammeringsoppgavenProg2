@@ -100,7 +100,7 @@ public class Convert {
 			throw new IllegalArgumentException("Argument larger than max limit");
 		}
 		if (d == 0) {
-			return "0";
+			return "000000000000000000000000";
 		}
 		int i = 0;
 		for (; i < 24; i++) {
@@ -120,6 +120,12 @@ public class Convert {
 		if(d!=0){
 			System.err.println("'d' was not 0, and unexpected algorythm has occurred. " + d);
 		}
+		String addLeft = "";
+		int left = 24-res.length();
+		for (int j = 0; j < left; j++) {
+			addLeft+="0";
+		}
+		res = addLeft+res;
 		return res;
 	}
 	public static int BinToDec(String s) {
