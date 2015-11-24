@@ -6,7 +6,11 @@ import org.junit.runners.Suite;
 @Suite.SuiteClasses({
   DecToHexParaTest.class, 
   HexToDecParaTest.class,
-  TestKlasse.class,}
+  TestKlasse.class,
+  BinToDecParaTest.class,
+  DecToBinParaTest.class,
+  BitWiseORParaTest.class,
+  BitWiseANDParaTest.class}
 )
 public class TestSuite {
 }
