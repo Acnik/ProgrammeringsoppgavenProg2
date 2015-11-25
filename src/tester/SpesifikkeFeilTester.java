@@ -3,9 +3,9 @@ package tester;
 import org.junit.*;
 import mainPackage.*;
 
-public class TestKlasse {
-
-	 @Test(expected = IllegalArgumentException.class)
+public class SpesifikkeFeilTester {
+	
+	@Test(expected = IllegalArgumentException.class)
 	public void DecToBin_ToBigInt_IllegalArgumentException() {
 		Utility.DecToBin(2147483647);
 

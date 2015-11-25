@@ -1,6 +1,9 @@
 package mainPackage;
 
 public class Utility {
+	public Utility() {
+		// TODO Auto-generated constructor stub
+	}
 	public static int HexToDec(String s) {
 		if (s.length()>6) {
 			throw new IllegalArgumentException("Argument larger than max limit");
