@@ -1,113 +1,115 @@
 package mainPackage;
 
-
 public class Utility {
 	public static int HexToDec(String s) {
-		if (s.length()>6) {
+		if (s.length() > 6) {
 			throw new IllegalArgumentException("Argument larger than max limit, was " + s.length());
 		}
 		s = s.toUpperCase();
 		int res = 0;
 		for (int i = 0; i < s.length(); i++) {
-			int value = s.charAt(s.length()-i-1);
+			int value = s.charAt(s.length() - i - 1);
 			switch (value) {
 			case 48:
-				value =0;
+				value = 0;
 				break;
-				
+
 			case 49:
-				value =1;
+				value = 1;
 				break;
-				
+
 			case 50:
-				value =2;
+				value = 2;
 				break;
-				
+
 			case 51:
-				value =3;
+				value = 3;
 				break;
-				
+
 			case 52:
-				value =4;
+				value = 4;
 				break;
-				
+
 			case 53:
-				value =5;
+				value = 5;
 				break;
-				
+
 			case 54:
-				value =6;
+				value = 6;
 				break;
-				
+
 			case 55:
-				value =7;
+				value = 7;
 				break;
-				
+
 			case 56:
-				value =8;
+				value = 8;
 				break;
-				
+
 			case 57:
-				value =9;
+				value = 9;
 				break;
-				
+
 			case 65:
-				value =10;
+				value = 10;
 				break;
 
 			case 66:
-				value =11;
+				value = 11;
 				break;
 
 			case 67:
-				value =12;
+				value = 12;
 				break;
 
 			case 68:
-				value =13;
+				value = 13;
 				break;
 
 			case 69:
-				value =14;
+				value = 14;
 				break;
 
 			case 70:
-				value =15;
+				value = 15;
 				break;
 
 			default:
-				throw new IllegalArgumentException("Illegal characters in the argument. It must be from 0-9, A-Z. It was: " + (char)value);
+				throw new IllegalArgumentException(
+						"Illegal characters in the argument. It must be from 0-9, A-Z. It was: " + (char) value);
 			}
-			res += value*Math.pow(16, (i));
+			res += value * Math.pow(16, (i));
 		}
 		return res;
 	}
+
 	public static String DecToHex(int d) {
-		if (d>16777215) {
+		if (d > 16777215) {
 			throw new IllegalArgumentException("Argument larger than max limit");
 		}
-		if (d<0) {
+		if (d < 0) {
 			throw new IllegalArgumentException("Argument smaller than 0");
 		}
-		if (d==0) {
+		if (d == 0) {
 			return "0";
 		}
 		int rem;
 		String res = "";
-		char[] hex = new char[]{'0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F'};
-		while (d>0){
-			rem=d%16;
-			res=hex[rem]+res;
-			d=d/16;
+		char[] hex = new char[] { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F' };
+		while (d > 0) {
+			rem = d % 16;
+			res = hex[rem] + res;
+			d = d / 16;
 		}
 		return res;
 	}
+
 	public static String DecToBin(int d) {
 		int bit24 = (int) Math.pow(2, 24);
-		if (d>bit24) {
+		if (d > bit24) {
 			throw new IllegalArgumentException("Argument larger than max limit");
 		}
-		if (d<0) {
+		if (d < 0) {
 			throw new IllegalArgumentException("Argument smaller than 0");
 		}
 		if (d == 0) {
@@ -115,87 +117,100 @@ public class Utility {
 		}
 		int i = 0;
 		for (; i < 24; i++) {
-			if (d<Math.pow(2, i)) {
+			if (d < Math.pow(2, i)) {
 				break;
 			}
 		}
 		String res = "";
 		for (; i > 0; i--) {
-			if (d>=Math.pow(2, i-1)) {
-				d-=Math.pow(2, i-1);
-				res+= 1;
-			}else {
-				res+= 0;
+			if (d >= Math.pow(2, i - 1)) {
+				d -= Math.pow(2, i - 1);
+				res += 1;
+			} else {
+				res += 0;
 			}
 		}
 		String addLeft = "";
-		int left = 24-res.length();
+		int left = 24 - res.length();
 		for (int j = 0; j < left; j++) {
-			addLeft+="0";
+			addLeft += "0";
 		}
-		res = addLeft+res;
+		res = addLeft + res;
 		return res;
 	}
+
 	public static int BinToDec(String s) {
-		if (s.length()>24) {
+		if (s.length() > 24) {
 			throw new IllegalArgumentException("Argument larger than max limit");
 		}
 		int res = 0;
 		for (int i = 0; i < s.length(); i++) {
-			if ((s.charAt(i)!='0')&&(s.charAt(i)!='1')) {
+			if ((s.charAt(i) != '0') && (s.charAt(i) != '1')) {
 				throw new IllegalArgumentException("Illegal characters in the argument.");
 			}
-			res += ((s.charAt(s.length()-i-1))-48)*Math.pow(2, (i));
+			res += ((s.charAt(s.length() - i - 1)) - 48) * Math.pow(2, (i));
 		}
 		return res;
 	}
+
 	public static String BitWiseOR(String input1, String input2) {
 		if (input1.length() != 24) {
-			throw new IllegalArgumentException("Input1 string length is not 24 characters long. It was: " + input1.length());
+			throw new IllegalArgumentException(
+					"Input1 string length is not 24 characters long. It was: " + input1.length());
 		}
 		if (input2.length() != 24) {
-			throw new IllegalArgumentException("Input2 string length is not 24 characters long. It was: " + input2.length());
+			throw new IllegalArgumentException(
+					"Input2 string length is not 24 characters long. It was: " + input2.length());
 		}
 		String res = "";
 
 		for (int i = 0; i < 24; i++) {
-			if ((input1.charAt(i) != '1')&&(input1.charAt(i) != '0')) {
-				throw new IllegalArgumentException("Illegal character at space " + i + " in input 1. Error happened while doin BitWiseOR on \"" + input1 + "\" and \"" + input2 + "\".");
+			if ((input1.charAt(i) != '1') && (input1.charAt(i) != '0')) {
+				throw new IllegalArgumentException(
+						"Illegal character at space " + i + " in input 1. Error happened while doin BitWiseOR on \""
+								+ input1 + "\" and \"" + input2 + "\".");
 			}
-			if ((input2.charAt(i) != '1')&&(input2.charAt(i) != '0')) {
-				throw new IllegalArgumentException("Illegal character at space " + i + " in input 2. Error happened while doin BitWiseOR on \"" + input1 + "\" and \"" + input2 + "\".");
+			if ((input2.charAt(i) != '1') && (input2.charAt(i) != '0')) {
+				throw new IllegalArgumentException(
+						"Illegal character at space " + i + " in input 2. Error happened while doin BitWiseOR on \""
+								+ input1 + "\" and \"" + input2 + "\".");
 			}
-			if ((input1.charAt(i) == '1')||(input2.charAt(i) == '1')) {
+			if ((input1.charAt(i) == '1') || (input2.charAt(i) == '1')) {
 				res += "1";
-			}else {
+			} else {
 				res += "0";
 			}
 		}
-		
-		
-		
+
 		return res;
 	}
+
 	public static String BitWiseAND(String input1, String input2) {
 		if (input1.length() != 24) {
-			throw new IllegalArgumentException("Input1 string length is not 24 characters long. It was: " + input1.length());
+			throw new IllegalArgumentException(
+					"Input1 string length is not 24 characters long. It was: " + input1.length());
 		}
 		if (input2.length() != 24) {
-			throw new IllegalArgumentException("Input2 string length is not 24 characters long. It was: " + input2.length());
+			throw new IllegalArgumentException(
+					"Input2 string length is not 24 characters long. It was: " + input2.length());
 		}
 		String res = "";
 
 		for (int i = 0; i < 24; i++) {
-			if ((input1.charAt(i) != '1')&&(input1.charAt(i) != '0')) {
-				throw new IllegalArgumentException("Illegal character at space " + i + " in input 1. Error happened while doin BitWiseOR on \"" + input1 + "\" and \"" + input2 + "\".");
+			if ((input1.charAt(i) != '1') && (input1.charAt(i) != '0')) {
+				throw new IllegalArgumentException(
+						"Illegal character at space " + i + " in input 1. Error happened while doin BitWiseOR on \""
+								+ input1 + "\" and \"" + input2 + "\".");
 			}
-			if ((input2.charAt(i) != '1')&&(input2.charAt(i) != '0')) {
-				throw new IllegalArgumentException("Illegal character at space " + i + " in input 2. Error happened while doin BitWiseOR on \"" + input1 + "\" and \"" + input2 + "\".");
+			if ((input2.charAt(i) != '1') && (input2.charAt(i) != '0')) {
+				throw new IllegalArgumentException(
+						"Illegal character at space " + i + " in input 2. Error happened while doin BitWiseOR on \""
+								+ input1 + "\" and \"" + input2 + "\".");
 			}
-			
-			if ((input1.charAt(i) == '1')&&(input2.charAt(i) == '1')) {
+
+			if ((input1.charAt(i) == '1') && (input2.charAt(i) == '1')) {
 				res += "1";
-			}else {
+			} else {
 				res += "0";
 			}
 		}

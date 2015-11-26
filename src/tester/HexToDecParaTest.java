@@ -27,7 +27,7 @@ public static java.util.Collection< String[] > input() {
 		{ "C78DE", 	"817374" },
 		{ "2CA35", 	"182837" },
 		{ "EB79A2", "15432098" },
-} );
+		} );
 }
 
 @org.junit.Test

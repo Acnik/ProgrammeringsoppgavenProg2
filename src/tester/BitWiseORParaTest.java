@@ -60,7 +60,7 @@ public class BitWiseORParaTest {
 				"111111111111111111111111", 
 				"111111111111111111111111"
 				},
-	} );
+	} ); 
 }
 
 	@org.junit.Test

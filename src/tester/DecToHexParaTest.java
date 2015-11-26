@@ -8,7 +8,6 @@ import mainPackage.Utility;
 public class DecToHexParaTest {
 	private String hexadec;
 	private int decimal;
-
 	public DecToHexParaTest( String binary, String decimal ) {
 		this.hexadec = binary;
 		this.decimal = Integer.parseInt( decimal );

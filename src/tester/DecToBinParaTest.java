@@ -28,7 +28,7 @@ public class DecToBinParaTest {
 			{ "111010110111100110100010", "15432098" },
 			{ "111111111111111111111111", "16777215" },
 	} );
-}
+} 
 
 	@org.junit.Test
 	public void testBinaryToIntConversion() {

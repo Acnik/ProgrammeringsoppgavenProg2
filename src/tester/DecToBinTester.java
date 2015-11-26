@@ -10,7 +10,8 @@ public class DecToBinTester {
 		Utility.DecToBin(2147483647);
 
 	}
-	 @Test(expected = IllegalArgumentException.class)
+
+	@Test(expected = IllegalArgumentException.class)
 	public void DecToBin_NegativeInt_IllegalArgumentException() {
 		Utility.DecToBin(-83647);
 

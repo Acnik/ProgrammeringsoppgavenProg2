@@ -15,7 +15,7 @@ public class BitWiseANDParaTest {
 		this.input1 = input1;
 		this.input2 = input2;
 		this.result = result;
-	}
+	} 
 
 	@org.junit.runners.Parameterized.Parameters
 	public static java.util.Collection< String[] > input() {

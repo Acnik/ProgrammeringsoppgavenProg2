@@ -13,7 +13,7 @@ public class BinToDecParaTest {
 		this.binary = binary;
 		this.decimal = Integer.parseInt( decimal );
 	}
-
+ 
 	@org.junit.runners.Parameterized.Parameters
 	public static java.util.Collection< String[] > input() {
 		return java.util.Arrays.asList( new String[][]{

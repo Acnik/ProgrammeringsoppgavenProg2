@@ -2,7 +2,7 @@ package mainPackage;
 
 import java.awt.IllegalComponentStateException;
 
-public class DataMedlem implements Comparable<DataMedlem> {
+public class DataMember implements Comparable<DataMember> {
 	public String id;
 	public Character operator;
 	public String input1;
@@ -12,19 +12,21 @@ public class DataMedlem implements Comparable<DataMedlem> {
 	public String hexRes;
 	public boolean calculated;
 
-	public DataMedlem() {
+	public DataMember() {
 		id = input1 = input2 = binRes = hexRes = null;
 		decRes = null;
 		operator = null;
 		calculated = false;
 	}
-	public DataMedlem(String id, Character operator, String input1, String input2) {
+
+	public DataMember(String id, Character operator, String input1, String input2) {
 		this.id = id;
 		this.operator = operator;
 		this.input1 = input1;
 		this.input2 = input2;
 		calculated = false;
 	}
+
 	public void calculate() {
 		if (!calculated) {
 			if (operator == '1') {
@@ -45,38 +47,50 @@ public class DataMedlem implements Comparable<DataMedlem> {
 		}
 
 	}
+
 	public String getId() {
 		return id;
 	}
+
 	public Character getOperator() {
 		return operator;
 	}
+
 	public String getInput1() {
 		return input1;
 	}
+
 	public String getInput2() {
 		return input2;
 	}
+
 	public String getBinRes() {
 		return binRes;
 	}
+
 	public Integer getDecRes() {
 		return decRes;
 	}
+
 	public String getHexRes() {
 		return hexRes;
 	}
+
 	public boolean isCalculated() {
 		return calculated;
 	}
+
 	@Override
-	public int compareTo(DataMedlem o) {
+	public int compareTo(DataMember o) {
 		return Integer.compare(Utility.HexToDec(id), Utility.HexToDec(o.getId()));
 	}
-	public boolean equals(DataMedlem o) {
+
+	public boolean equals(DataMember o) {
 		return id.equals(o.id) && operator.equals(o.operator) && input1.equals(o.input1) && input2.equals(o.input2);
 	}
+
 	public String toString() {
-		return ("ID: " + id + ", OP: " + operator + ", Input1: " + input1 + ", Input2: " + input2 + ", BIN: " + binRes  + ", DEC: " + decRes + ", HEX: " + hexRes + ", Calculated: " + calculated + ".");
+		return ("ID: " + id + ", OP: " + operator + ", Input1: " + input1 + ", Input2: " + input2 + ", BIN: " + binRes
+				+ ", DEC: " + decRes + ", HEX: " + hexRes + ", Calculated: " + calculated + ".");
 	}
 }

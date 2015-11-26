@@ -10,7 +10,8 @@ public class DecToHexTester {
 		Utility.DecToHex(2147483647);
 
 	}
-	 @Test(expected = IllegalArgumentException.class)
+
+	@Test(expected = IllegalArgumentException.class)
 	public void DecToHex_NegativeInt_IllegalArgumentException() {
 		Utility.DecToHex(-83647);
 

@@ -11,6 +11,7 @@ public class HexToDecTester {
 		Utility.HexToDec("FFFFFFFFFFFFFF");
 
 	}
+
 	@Test(expected = IllegalArgumentException.class)
 	public void HexToDec_StringWithIllegalCharacters_IllegalArgumentException() {
 		Utility.HexToDec("ØÆÅ");
