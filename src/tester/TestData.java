@@ -2,6 +2,7 @@ package tester;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 import org.junit.*;
@@ -11,23 +12,16 @@ import static org.junit.Assert.*;
 public class TestData {
 	private static Data data;
 	@Before
-	public void Initializer() throws IOException {
+	public void Initializer() throws IOException{
 		BufferedReader reader = mock(BufferedReader.class); 
-		when( reader.readLine() ).thenReturn( 
-			    "03ac0f", 
-			    "1",
-			    "110101000000110111001101",
-			    "001000011110011101001111", 
-			    "ac0e1e", 
-			    "2", 
-			    "001000011110011101001111",
-			    "000101010101010101111001", 
-		    null 
+		when( reader.readLine() ).thenReturn(
+			    "03ac0f 1 110101000000110111001101 001000011110011101001111",
+			    "ac0e1e 2 001000011110011101001111 000101010101010101111001", 
+			    null 
 		); 
 		data = new Data();
 		data.ReadData(reader);
 		data.CalculateData();
-
 	}
 	@Test
 	public void GetId() {
@@ -49,8 +43,8 @@ public class TestData {
 	}
 	@Test
 	public void GetBinRes() {
-		assertEquals(data.get("03ac0f").getBinRes(), "000000000000010101001101");
-		assertEquals(data.get("ac0e1e").getBinRes(), "001101011111011101111111");
+		assertEquals("000000000000010101001101",	data.get("03ac0f").getBinRes());
+		assertEquals("001101011111011101111111",	data.get("ac0e1e").getBinRes());
 		
 	}
 	@Test
@@ -61,8 +55,8 @@ public class TestData {
 	}
 	@Test
 	public void GetHexRes() {
-		assertEquals(data.get("03ac0f").getHexRes(), "54D");
-		assertEquals(data.get("ac0e1e").getHexRes(), "35F77F");
+		assertEquals("54D",		data.get("03ac0f").getHexRes());
+		assertEquals("35F77F",	data.get("ac0e1e").getHexRes());
 		
 	}
 

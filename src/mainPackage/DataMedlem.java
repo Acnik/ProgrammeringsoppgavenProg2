@@ -1,5 +1,7 @@
 package mainPackage;
 
+import java.awt.IllegalComponentStateException;
+
 public class DataMedlem implements Comparable<DataMedlem> {
 	public String id;
 	public Character operator;
@@ -14,7 +16,7 @@ public class DataMedlem implements Comparable<DataMedlem> {
 		id = input1 = input2 = binRes = hexRes = null;
 		decRes = null;
 		operator = null;
-		calculated = true;
+		calculated = false;
 	}
 	public DataMedlem(String id, Character operator, String input1, String input2) {
 		this.id = id;
@@ -24,22 +26,22 @@ public class DataMedlem implements Comparable<DataMedlem> {
 		calculated = false;
 	}
 	public void calculate() {
-		if (calculated) {
+		if (!calculated) {
 			if (operator == '1') {
 				binRes = Utility.BitWiseAND(input1, input2);
 				decRes = Utility.BinToDec(binRes);
 				hexRes = Utility.DecToHex(decRes);
-				calculated = false;
+				calculated = true;
 			}
 			if (operator == '2') {
 				binRes = Utility.BitWiseOR(input1, input2);
 				decRes = Utility.BinToDec(binRes);
 				hexRes = Utility.DecToHex(decRes);
-				calculated = false;
+				calculated = true;
 
 			}
 		} else {
-			System.out.println("Data id: " + id + " is already calculated. did nothing to it.");
+			throw new IllegalComponentStateException("Data id: " + id + " is already calculated. did nothing to it.");
 		}
 
 	}

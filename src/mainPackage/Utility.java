@@ -1,14 +1,12 @@
 package mainPackage;
 
+
 public class Utility {
-	public Utility() {
-		// TODO Auto-generated constructor stub
-	}
 	public static int HexToDec(String s) {
 		if (s.length()>6) {
-			throw new IllegalArgumentException("Argument larger than max limit");
+			throw new IllegalArgumentException("Argument larger than max limit, was " + s.length());
 		}
-
+		s = s.toUpperCase();
 		int res = 0;
 		for (int i = 0; i < s.length(); i++) {
 			int value = s.charAt(s.length()-i-1);
@@ -78,7 +76,7 @@ public class Utility {
 				break;
 
 			default:
-				throw new IllegalArgumentException("Illegal characters in the argument.");
+				throw new IllegalArgumentException("Illegal characters in the argument. It must be from 0-9, A-Z. It was: " + (char)value);
 			}
 			res += value*Math.pow(16, (i));
 		}
@@ -152,6 +150,12 @@ public class Utility {
 		return res;
 	}
 	public static String BitWiseOR(String input1, String input2) {
+		if (input1.length() != 24) {
+			throw new IllegalArgumentException("Input1 string length is not 24 characters long. It was: " + input1.length());
+		}
+		if (input2.length() != 24) {
+			throw new IllegalArgumentException("Input2 string length is not 24 characters long. It was: " + input2.length());
+		}
 		String res = "";
 		int len;
 		
@@ -184,9 +188,14 @@ public class Utility {
 		return res;
 	}
 	public static String BitWiseAND(String input1, String input2) {
+		if (input1.length() != 24) {
+			throw new IllegalArgumentException("Input1 string length is not 24 characters long. It was: " + input1.length());
+		}
+		if (input2.length() != 24) {
+			throw new IllegalArgumentException("Input2 string length is not 24 characters long. It was: " + input2.length());
+		}
 		String res = "";
 		int len;
-		
 		
 		if (input1.length() > input2.length()) {
 			len = input1.length();
@@ -206,6 +215,7 @@ public class Utility {
 			if ((input2.charAt(i) != '1')&&(input2.charAt(i) != '0')) {
 				throw new IllegalArgumentException("Illegal character at space " + i + " in input 2. Error happened while doin BitWiseOR on \"" + input1 + "\" and \"" + input2 + "\".");
 			}
+			
 			if ((input1.charAt(i) == '1')&&(input2.charAt(i) == '1')) {
 				res += "1";
 			}else {
