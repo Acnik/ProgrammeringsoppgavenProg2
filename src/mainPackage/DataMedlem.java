@@ -76,4 +76,7 @@ public class DataMedlem implements Comparable<DataMedlem> {
 	public boolean equals(DataMedlem o) {
 		return id.equals(o.id) && operator.equals(o.operator) && input1.equals(o.input1) && input2.equals(o.input2);
 	}
+	public String toString() {
+		return ("ID: " + id + ", OP: " + operator + ", Input1: " + input1 + ", Input2: " + input2 + ", BIN: " + binRes  + ", DEC: " + decRes + ", HEX: " + hexRes + ", Calculated: " + calculated + ".");
+	}
 }

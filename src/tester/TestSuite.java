@@ -17,6 +17,7 @@ import org.junit.runners.Suite;
 	BitWiseORParaTest.class,
 	BitWiseANDParaTest.class,
 	ErrorLogTest.class,
+	DuplicateTest.class,
 	TestData.class}
 )
 public class TestSuite {

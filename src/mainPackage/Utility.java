@@ -157,19 +157,8 @@ public class Utility {
 			throw new IllegalArgumentException("Input2 string length is not 24 characters long. It was: " + input2.length());
 		}
 		String res = "";
-		int len;
-		
-		
-		if (input1.length() > input2.length()) {
-			len = input1.length();
-		}else{
-			len = input2.length();
-		}
-		if (len>24) {
-			throw new IllegalArgumentException("Input string cannot be longer than 24 characters, it was " + len);
-		}
-		
-		for (int i = 0; i < len; i++) {
+
+		for (int i = 0; i < 24; i++) {
 			if ((input1.charAt(i) != '1')&&(input1.charAt(i) != '0')) {
 				throw new IllegalArgumentException("Illegal character at space " + i + " in input 1. Error happened while doin BitWiseOR on \"" + input1 + "\" and \"" + input2 + "\".");
 			}
@@ -195,20 +184,8 @@ public class Utility {
 			throw new IllegalArgumentException("Input2 string length is not 24 characters long. It was: " + input2.length());
 		}
 		String res = "";
-		int len;
-		
-		if (input1.length() > input2.length()) {
-			len = input1.length();
-		}else{
-			len = input2.length();
-		}
-		
 
-		if (len>24) {
-			throw new IllegalArgumentException("Input string cannot be longer than 24 characters, it was " + len);
-		}
-		
-		for (int i = 0; i < len; i++) {
+		for (int i = 0; i < 24; i++) {
 			if ((input1.charAt(i) != '1')&&(input1.charAt(i) != '0')) {
 				throw new IllegalArgumentException("Illegal character at space " + i + " in input 1. Error happened while doin BitWiseOR on \"" + input1 + "\" and \"" + input2 + "\".");
 			}
